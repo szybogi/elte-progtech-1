@@ -1,15 +1,25 @@
 public class Main {
 
     public static void main(String[] args) {
+        test(")", false);
+        test("(", false);
+        test("()", true);
+        test("(()", false);
+        test("(())", true);
+        test("((())", false);
+        test("(()()(()(()())()))", true);
+        test("(()()(()(()())())))", false);
+    }
 
-        Verem verem = new Verem("()()");
-
-        Ellenorzo ellenorzo = new Ellenorzo(verem);
-
-        if (ellenorzo.helyesE()) {
-            System.out.println("Helyes!");
+    private static void test(String str, boolean expected) {
+        if(expected == new Ellenorzo(new Verem(str)).helyesE()) {
+            System.out.println(String.format(
+                    "OK:\t'%s'", str
+            ));
         } else {
-            System.out.println("Helytelen!");
+            System.err.println(String.format(
+                    "FAIL:\t'%s'", str
+            ));
         }
     }
 
