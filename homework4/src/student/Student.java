@@ -75,31 +75,15 @@ public class Student {
         return l;
     }
 
-    public static List<Student> orderByAverages(List<Student> students){
-        return students.stream().sorted((a, b) -> {
-            if(a.getAverage() < b.getAverage()) return 1;
-            else if(a.getAverage() > b.getAverage()) return  -1;
-            else return 0;
-        }).collect(Collectors.toList());
-    }
-
     public static List<Student> bestThree(List<Student> students) {
         List<Student> bestThree = new ArrayList<>();
         List<Student> studentsCopy = new ArrayList<>(students);
         for (int i = 0; i < 3; i++) {
-            Student student = max(studentsCopy);
+            Student student = maxAverage(studentsCopy);
             studentsCopy.remove(student);
             bestThree.add(student);
         }
         return bestThree;
-    }
-
-    public static Student max(List<Student> students) {
-        return students.stream().max((a, b) -> {
-            if(a.getAverage() > b.getAverage()) return 1;
-            else if(b.getAverage() > a.getAverage()) return -1;
-            else return 0;
-        }).get();
     }
 
     public void show() {
