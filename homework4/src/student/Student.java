@@ -1,7 +1,10 @@
 package student;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Student {
 
@@ -54,5 +57,27 @@ public class Student {
 
     public boolean equals(Student student){
         return student != null && student.getNeptunIdeptunId().equals(neptunId);
+    }
+
+    public static ArrayList<Student> read(File file){
+        try(Scanner scn = new Scanner(file)) {
+            List<Student> result = new ArrayList<>();
+            while(scn.hasNextLine()) {
+                String[] line = scn.nextLine().split(" ");
+                ArrayList<Integer> grade = new ArrayList<>();
+                Integer g = Integer.valueOf(line[1]);
+                Student student = Student.make(line[0], grade);
+                if(result.contains(student)) {
+                    result.get(result.indexOf(student)).addGrade(g);
+                } else {
+                    result.add(student);
+                    result.get(result.indexOf(student)).addGrade(g);
+                }
+            }
+            return result;
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
