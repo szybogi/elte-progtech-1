@@ -33,10 +33,7 @@ public class Student {
     }
 
     public double getAverage(){
-        if(grades.size() == 0)
-        {
-            return 0;
-        }
+        if(grades.size() == 0) { return 0; }
         double result = 0;
         for(int i = 0;i < grades.size();i++){
             result += grades.get(i);
@@ -52,10 +49,10 @@ public class Student {
         return new Student(id, grades);
     }
     public void show() {
-        System.out.println(this.neptunId + ", " + getAverage());
+        System.out.println(neptunId + ", " + getAverage());
     }
 
     public boolean equals(Student student){
-        return student != null && (student.getNeptunIdeptunId().equals(this.neptunId));
+        return student != null && student.getNeptunIdeptunId().equals(neptunId);
     }
 }
