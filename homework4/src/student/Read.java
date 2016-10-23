@@ -15,11 +15,12 @@ public class Read {
             String[] line = sc.nextLine().split(" ");
             ArrayList<Integer> grade = new ArrayList<>();
             Integer g = Integer.valueOf(line[1]);
-            Student student = new Student(Student.make(line[0], grade));
+            Student student = Student.make(line[0], grade);
             if(result.contains(student)) {
                 result.get(result.indexOf(student)).addGrade(g);
             } else {
                 result.add(student);
+                result.get(result.indexOf(student)).addGrade(g);
             }
         }
         return result;
