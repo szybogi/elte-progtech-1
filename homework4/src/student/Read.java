@@ -20,7 +20,6 @@ public class Read {
                 result.get(result.indexOf(student)).addGrade(g);
             } else {
                 result.add(student);
-                result.get(result.indexOf(student)).addGrade(g);
             }
         }
         return result;
