@@ -1,11 +1,12 @@
 package student;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
 
     public final String neptunId;
-    public final ArrayList<Integer> grades;
+    public final List<Integer> grades;
 
     public Student(String neptunId, ArrayList<Integer> grades){
         this.neptunId = neptunId;
@@ -14,16 +15,16 @@ public class Student {
     }
 
     public Student(Student student){
-        this.neptunId = student.getNeptunIdeptunId();
-        this.grades = student.getGrades();
+        neptunId = student.getNeptunIdeptunId();
+        grades = student.getGrades();
     }
 
     public String getNeptunIdeptunId(){
         return neptunId;
     }
 
-    public ArrayList<Integer> getGrades(){
-        return this.grades;
+    public List<Integer> getGrades(){
+        return new ArrayList<Integer>(grades);
     }
 
     public void addGrade(int gr){
