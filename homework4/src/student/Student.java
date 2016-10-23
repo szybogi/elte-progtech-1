@@ -45,6 +45,14 @@ public class Student {
         return result/grades.size();
     }
 
+
+    public static Student make(String id, List<Integer> grades) {
+        if(id.isEmpty() || id.length() !=6 ) {
+            return null;
+        }
+        return new Student(id, grades);
+    }
+
     public static Student maxAverage(List<Student> students){
         Student student = students.get(0);
         for(int i = 1;i < students.size();i++){
@@ -55,12 +63,6 @@ public class Student {
         return student;
     }
 
-    public static Student make(String id, List<Integer> grades) {
-        if(id.isEmpty() || id.length() !=6 ) {
-            return null;
-        }
-        return new Student(id, grades);
-    }
     public static boolean allAverage(List<Student> students){
         double a;
         boolean l = true;
