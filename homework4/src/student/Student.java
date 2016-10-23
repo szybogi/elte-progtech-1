@@ -83,12 +83,23 @@ public class Student {
         }).collect(Collectors.toList());
     }
 
-    public static void bestThree(List<Student> students) {
-        for(Student student : orderByAverages(students).subList(0,3)){
-            student.show();
+    public static List<Student> bestThree(List<Student> students) {
+        List<Student> bestThree = new ArrayList<>();
+        List<Student> studentsCopy = new ArrayList<>(students);
+        for (int i = 0; i < 3; i++) {
+            Student student = max(studentsCopy);
+            studentsCopy.remove(student);
+            bestThree.add(student);
         }
-        orderByAverages(students).subList(0,3).forEach(Student::show);
+        return bestThree;
+    }
 
+    public static Student max(List<Student> students) {
+        return students.stream().max((a, b) -> {
+            if(a.getAverage() > b.getAverage()) return 1;
+            else if(b.getAverage() > a.getAverage()) return -1;
+            else return 0;
+        }).get();
     }
 
     public void show() {

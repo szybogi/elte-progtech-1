@@ -13,6 +13,8 @@ public class Main {
         System.out.println("Igaz e, hogy minden tanulónak az átlaga legalább négyes? "
                 + Student.allAverage(studentsFromFile1));
         System.out.println("A legjobb 3 átlaggal rendelkező: ");
-        Student.showBestNOf(studentsFromFile1);
+        for (Student student: Student.bestThree(studentsFromFile1)) {
+            student.show();
+        }
     }
 }
