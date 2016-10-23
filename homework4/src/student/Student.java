@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Student {
 
@@ -44,26 +45,42 @@ public class Student {
         return result/grades.size();
     }
 
-
     public static Student make(String id, List<Integer> grades) {
         if(id.isEmpty() || id.length() !=6 ) {
             return null;
         }
         return new Student(id, grades);
     }
-    public void show() {
-        System.out.println(neptunId + ", " + getAverage());
+    public static boolean allAverage(List<Student> students){
+        double a;
+        boolean l = true;
+        for (int i = 0; i < students.size();i++){
+            a = students.get(i).getAverage();
+            if(a >= 4){
+                l = false;
+            }
+        }
+        return l;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public static List<Student> orderByAverages(List<Student> students){
+        return students.stream().sorted((a, b) -> {
+            if(a.getAverage() < b.getAverage()) return 1;
+            else if(a.getAverage() > b.getAverage()) return  -1;
+            else return 0;
+        }).collect(Collectors.toList());
+    }
 
-        Student student = (Student) o;
+    public static void bestThree(List<Student> students) {
+        for(Student student : orderByAverages(students).subList(0,3)){
+            student.show();
+        }
+        orderByAverages(students).subList(0,3).forEach(Student::show);
 
-        return neptunId != null ? neptunId.equals(student.neptunId) : student.neptunId == null;
+    }
 
+    public void show() {
+        System.out.println(neptunId + ", " + getAverage());
     }
 
     public static List<Student> read(File file) throws FileNotFoundException {
@@ -83,5 +100,16 @@ public class Student {
             }
             return result;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        return neptunId != null ? neptunId.equals(student.neptunId) : student.neptunId == null;
+
     }
 }
