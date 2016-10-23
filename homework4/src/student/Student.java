@@ -59,7 +59,7 @@ public class Student {
         return student != null && student.getNeptunIdeptunId().equals(neptunId);
     }
 
-    public static List<Student> read(File file){
+    public static List<Student> read(File file) throws FileNotFoundException {
         try(Scanner scn = new Scanner(file)) {
             List<Student> result = new ArrayList<>();
             while(scn.hasNextLine()) {
@@ -75,9 +75,6 @@ public class Student {
                 }
             }
             return result;
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
     }
 }
