@@ -11,7 +11,7 @@ public class Student {
     public final String neptunId;
     public final List<Integer> grades;
 
-    public Student(String neptunId, ArrayList<Integer> grades){
+    public Student(String neptunId, List<Integer> grades){
         this.neptunId = neptunId;
         this.grades = grades;
     }
@@ -45,7 +45,7 @@ public class Student {
     }
 
 
-    public static Student make(String id, ArrayList<Integer> grades) {
+    public static Student make(String id, List<Integer> grades) {
         if(id.isEmpty() || id.length() !=6 ) {
             return null;
         }
@@ -55,8 +55,15 @@ public class Student {
         System.out.println(neptunId + ", " + getAverage());
     }
 
-    public boolean equals(Student student){
-        return student != null && student.getNeptunIdeptunId().equals(neptunId);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        return neptunId != null ? neptunId.equals(student.neptunId) : student.neptunId == null;
+
     }
 
     public static List<Student> read(File file) throws FileNotFoundException {

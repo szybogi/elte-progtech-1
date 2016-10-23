@@ -1,14 +1,12 @@
-import student.Student;
-import student.StudentAverage;
+package student;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         List<Student> studentsFromFile1 = Student.read(new File("src/test1.txt"));
-        studentsFromFile1.forEach(student -> student.getGrades().forEach(System.out::println));
         for (int i = 0;i < studentsFromFile1.size();i++){
             System.out.println(studentsFromFile1.get(i).getAverage());
         }
