@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class StudentAverage {
 
-    public static boolean allAverage(ArrayList<Student> students){
+    public static boolean allAverage(List<Student> students){
         double a;
         boolean l = true;
         for (int i = 0; i < students.size();i++){
@@ -18,7 +18,7 @@ public class StudentAverage {
         return (l);
     }
 
-    public static List<Student> orderByAverages(ArrayList<Student> students){
+    public static List<Student> orderByAverages(List<Student> students){
         return students.stream().sorted((a, b) -> {
             if(a.getAverage() < b.getAverage()) return 1;
             else if(a.getAverage() > b.getAverage()) return  -1;
@@ -26,7 +26,7 @@ public class StudentAverage {
         }).collect(Collectors.toList());
     }
 
-    public static void showBestNOf( ArrayList<Student> students) {
+    public static void showBestNOf( List<Student> students) {
         orderByAverages(students).subList(0,3).forEach(Student::show);
     }
 
