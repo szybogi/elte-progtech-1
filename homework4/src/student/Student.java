@@ -11,7 +11,6 @@ public class Student {
     public Student(String neptunId, ArrayList<Integer> grades){
         this.neptunId = neptunId;
         this.grades = grades;
-
     }
 
     public Student(Student student){
@@ -34,12 +33,15 @@ public class Student {
     }
 
     public double getAverage(){
+        if(grades.size() == 0)
+        {
+            return 0;
+        }
         double result = 0;
         for(int i = 0;i < grades.size();i++){
             result += grades.get(i);
         }
-
-        return (result/grades.size());
+        return result/grades.size();
     }
 
 
