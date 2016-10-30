@@ -1,6 +1,6 @@
 package exceptions;
 
 public class NoCoverException extends Exception {
-    public NoCoverException() {}
-
+    public NoCoverException() {
+    }
 }

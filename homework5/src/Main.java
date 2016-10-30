@@ -29,24 +29,19 @@ public class Main {
         bank.addNewBankAccount(savingsAccount03);
         bank.addNewBankAccount(savingsAccount04);
 
-        normalAccount01.deposit(10000);
-        normalAccount01.deposit(20000);
-        normalAccount02.deposit(100000);
-        normalAccount03.deposit(10000);
-        normalAccount04.deposit(1000);
-        savingsAccount01.withdraw(500);
-        savingsAccount02.deposit(1000);
-        savingsAccount02.deposit(2000);
-        savingsAccount03.deposit(40000);
-        savingsAccount04.deposit(10000);
-        savingsAccount04.show();
-        normalAccount01.getHistory();
+        bank.deposit(normalAccount01, 10000);
+        bank.deposit(normalAccount01, 20000);
+        bank.deposit(normalAccount02, 100000);
+        bank.deposit(normalAccount03, 10000);
+        bank.deposit(normalAccount04, 1000);
+        bank.withdraw(savingsAccount01, 500);
+        bank.deposit(savingsAccount02, 1000);
+        bank.deposit(savingsAccount02, 2000);
+        bank.deposit(savingsAccount03, 40000);
+        bank.deposit(savingsAccount04, 10000);
 
 
-
-        bank.showTopFive();
-
-
+        Bank.showTopFive(bank);
 
 
     }
