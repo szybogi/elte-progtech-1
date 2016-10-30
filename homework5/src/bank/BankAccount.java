@@ -31,7 +31,7 @@ public abstract class BankAccount {
 
     public void withdraw(double withdraw) throws NoCoverException {
         if(balance < withdraw) {
-            throw new NoCoverException(this,balance);
+            throw new NoCoverException();
         }
         date = new Date();
         String da = String.valueOf(date);
@@ -39,7 +39,6 @@ public abstract class BankAccount {
         history.add("WITHDRAW " + w + " " + da);
         balance -= withdraw;
     }
-
 
     public  void deposit(double deposit){
         date = new Date();
