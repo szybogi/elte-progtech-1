@@ -1,6 +1,6 @@
 package bank;
 
-public final class NormalAccount extends BankAccount {
+public class NormalAccount extends BankAccount {
     private double overdraftLimit;
     public NormalAccount(String accountNumber, double overdraftLimit) {
         super(accountNumber);

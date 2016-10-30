@@ -1,6 +1,6 @@
 package bank;
 
-public final class SavingsAccount extends BankAccount{
+public class SavingsAccount extends BankAccount{
     private double interest;
     public SavingsAccount(String accountNumber, double interest) {
         super(accountNumber);

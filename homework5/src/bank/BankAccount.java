@@ -1,6 +1,6 @@
 package bank;
 
-import exceptions.NotCoverException;
+import exceptions.NoCoverException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class BankAccount {
     protected final String accountNumber;
     protected double balance;
-    protected List<String> history;
+    protected List<String> history = new ArrayList<>();
     private Date date;
 
     public BankAccount(String accountNumber){
@@ -29,9 +29,9 @@ public abstract class BankAccount {
         return balance;
     }
 
-    public  void withdraw(double withdraw)throws NotCoverException {
-        if(this instanceof SavingsAccount && balance < withdraw) {
-            throw new NotCoverException(this,balance);
+    public void withdraw(double withdraw) throws NoCoverException {
+        if(balance < withdraw) {
+            throw new NoCoverException(this,balance);
         }
         date = new Date();
         String da = String.valueOf(date);
@@ -39,6 +39,7 @@ public abstract class BankAccount {
         history.add("WITHDRAW " + w + " " + da);
         balance -= withdraw;
     }
+
 
     public  void deposit(double deposit){
         date = new Date();
@@ -48,7 +49,7 @@ public abstract class BankAccount {
         balance += deposit;
     }
 
-    public void modifyBalance(String action, double amount) throws NotCoverException {
+    public void modifyBalance(String action, double amount) throws NoCoverException {
         switch (action) {
             case "WITHDRAW": withdraw(amount);
                 break;

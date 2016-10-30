@@ -2,14 +2,14 @@ import bank.Bank;
 import bank.BankAccount;
 import bank.NormalAccount;
 import bank.SavingsAccount;
-import exceptions.NotCoverException;
+import exceptions.NoCoverException;
 
 import java.util.ArrayList;
 
 public class Main {
     private static Bank bank = new Bank(new ArrayList<>());
 
-    public static void main(String[]args) throws NotCoverException {
+    public static void main(String[]args) throws NoCoverException {
         BankAccount normalAccount01 = new NormalAccount("12345678-87654321", -40000);
         BankAccount normalAccount02 = new NormalAccount("12654328-87610321", -50000);
         BankAccount normalAccount03 = new NormalAccount("87654321-87654321", -6000);
@@ -30,7 +30,6 @@ public class Main {
         bank.addNewBankAccount(savingsAccount04);
 
         normalAccount01.deposit(10000);
-        normalAccount01.deposit(10000);
         normalAccount01.deposit(20000);
         normalAccount02.deposit(100000);
         normalAccount03.deposit(10000);
@@ -42,6 +41,7 @@ public class Main {
         savingsAccount04.deposit(10000);
         savingsAccount04.show();
         normalAccount01.getHistory();
+
 
 
         bank.showTopFive();
