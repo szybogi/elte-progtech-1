@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Student {
 
@@ -68,7 +67,7 @@ public class Student {
         boolean l = true;
         for (int i = 0; i < students.size();i++){
             a = students.get(i).getAverage();
-            if(a >= 4){
+            if(a < 4){
                 l = false;
             }
         }
