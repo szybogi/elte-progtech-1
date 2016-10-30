@@ -52,16 +52,15 @@ public class Bank {
     }
 
     public static List<BankAccount> orderByBalance(List<BankAccount> accounts) {
-        int n = 5;
-        List<BankAccount> topFive = orderByModify(accounts).subList(0, n);
-        return topFive.stream().sorted((a, b) -> {
+        return accounts.stream().sorted((a, b) -> {
             if (a.getBalance() < b.getBalance()) return 1;
             else if (a.getBalance() > b.getBalance()) return -1;
             else return 0;
         }).collect(Collectors.toList());
     }
 
-    public static void showTopFive(Bank accounts) {
-        orderByBalance(accounts.bankAccounts).forEach(account -> System.out.println(account.show()));
+    public static void showTopFive(Bank bank) {
+        List<BankAccount> topFive = orderByModify(bank.bankAccounts).subList(0, 5);
+        orderByBalance(topFive).forEach(account -> System.out.println(account.show()));
     }
 }
